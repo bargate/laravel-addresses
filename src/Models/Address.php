@@ -25,7 +25,9 @@ class Address extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'street',
+		'line_1',
+		'line_2',
+		'line_3',
 		'city',
 		'state',
 		'post_code',
@@ -89,10 +91,12 @@ class Address extends Model
 	 */
 	public static function getValidationRules() {
 		$rules = [
-			'street'     => 'required|string|min:3|max:60',
+			'line_1'     => 'required|string|min:2|max:60',
+			'line_2'     => 'string|min:2|max:60',
+			'line_3'     => 'string|min:2|max:60',
 			'city'       => 'required|string|min:3|max:60',
 			'state'      => 'string|min:3|max:60',
-			'post_code'  => 'required|min:4|max:10|AlphaDash',
+			'post_code'  => 'required|min:4|max:20|AlphaDash',
 			'country_id' => 'required|integer',
 		];
 
@@ -112,7 +116,9 @@ class Address extends Model
 	public function geocode() {
 		// build query string
 		$query = [];
-		$query[] = $this->street       ?: '';
+		$query[] = $this->line_1       ?: '';
+		$query[] = $this->line_2       ?: '';
+		$query[] = $this->line_3       ?: '';
 		$query[] = $this->city         ?: '';
 		$query[] = $this->state        ?: '';
 		$query[] = $this->post_code    ?: '';
@@ -152,7 +158,9 @@ class Address extends Model
 		$two[] = $this->city      ?: '';
 		$two[] = $this->state     ? '('. $this->state .')' : '';
 
-		$address[] = $this->street ?: '';
+		$address[] = $this->line_1 ?: '';
+		$address[] = $this->line_2 ?: '';
+		$address[] = $this->line_3 ?: '';
 		$address[] = implode( ' ', array_filter($two) );
 		$address[] = $this->getCountry() ?: '';
 

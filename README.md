@@ -58,7 +58,8 @@ Check out [Webpatser\Countries](https://github.com/webpatser/laravel-countries) 
 ```php
 $post = Post::find(1);
 $post->addAddress([
-    'street'     => '123 Example Drive',
+    'line_1'     => '123',
+    'line_2'     => 'Example Drive',
     'city'       => 'Vienna',
     'post_code'  => '1110',
     'country'    => 'AT', // ISO-3166-2 or ISO-3166-3 country code
@@ -70,7 +71,8 @@ Alternativly you could do...
 
 ```php
 $address = [
-    'street'     => '123 Example Drive',
+    'line_1'     => '123',
+    'line_2'     => 'Example Drive',
     'city'       => 'Vienna',
     'post_code'  => '1110',
     'country'    => 'AT', // ISO-3166-2 or ISO-3166-3 country code
@@ -79,7 +81,7 @@ $address = [
 $post->addAddress($address);
 ```
 
-Available attributes are `street`, `city`, `post_code`, `state`, `country`, `state`, `note` (for internal use), `is_primary`, `is_billing` & `is_shipping`. Optionally you could also pass `lng` and `lat`, in case you deactivated the included geocoding functionality and want to add them yourself.
+Available attributes are `line_1`, `line_2`, `line_3`, `city`, `post_code`, `state`, `country`, `state`, `note` (for internal use), `is_primary`, `is_billing` & `is_shipping`. Optionally you could also pass `lng` and `lat`, in case you deactivated the included geocoding functionality and want to add them yourself.
 
 ##### Check if Model has an Address
 ```php

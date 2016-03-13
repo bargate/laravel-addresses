@@ -34,7 +34,9 @@ class CreateAddressesTable extends Migration
 		{
 			$table->increments('id');
 
-			$table->string('street',    60);
+			$table->string('line_1',    60);
+			$table->string('line_2',    60);
+			$table->string('line_3',    60);
 			$table->string('city',      60);
 			$table->string('state',     60);
 			$table->string('post_code', 10);
