@@ -96,7 +96,7 @@ class Address extends Model
 			'line_3'     => 'string|min:2|max:60',
 			'city'       => 'required|string|min:3|max:60',
 			'state'      => 'string|min:3|max:60',
-			'post_code'  => 'required|min:4|max:20|AlphaDash',
+			'post_code'  => 'required|min:4|max:20|andsu',
 			'country_id' => 'required|integer',
 		];
 
